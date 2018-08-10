@@ -3,6 +3,8 @@ import { Paper, Typography, TextField, Button, List, ListItem, ListItemText, Lis
 import Delete from '@material-ui/icons/Delete'
 import { withStyles } from '@material-ui/core/styles'
 
+const hunkCheck = 'this is a change i would like to add as a hunk using git patch';
+
 //root refers to the 'root' Paper element.//
 
 //theme.spacing.unit comes at 8px by default//
