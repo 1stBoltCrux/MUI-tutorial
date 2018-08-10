@@ -3,14 +3,14 @@ import { Paper, Typography, TextField, Button, List, ListItem, ListItemText, Lis
 import Delete from '@material-ui/icons/Delete'
 import { withStyles } from '@material-ui/core/styles'
 
-
-
-
 //root refers to the 'root' Paper element.//
-const styles = theme => console.log(theme) || ({
+
+//theme.spacing.unit comes at 8px by default//
+
+const styles = ({ spacing: {unit} }) => ({
   root: {
-    margin:20,
-    padding:20,
+    margin: unit,
+    padding: unit * 3,
     maxWidth: 400
   },
   form: {
@@ -19,6 +19,9 @@ const styles = theme => console.log(theme) || ({
     justifyContent: 'space-evenly'
   }
 })
+
+
+
 
 export default withStyles(styles) (class App extends Component {
 
@@ -60,7 +63,7 @@ export default withStyles(styles) (class App extends Component {
 
 
   render() {
-    console.log(this.props);
+
 
 
     const { title, exercises } = this.state
