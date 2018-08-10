@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import { Paper, Typography, TextField, Button, List, ListItem, ListItemText, ListItemSecondaryAction, IconButton } from '@material-ui/core'
 import Delete from '@material-ui/icons/Delete'
+import { withStyles } from '@material-ui/core/styles'
 
-class App extends Component {
+
+//root refers to the 'root' Paper element.//
+const styles = {
+  root: {
+    margin:20,
+    padding:20,
+    maxWidth: 400
+  }
+}
+
+export default withStyles(styles) (class App extends Component {
+
   state = {
     exercises: [
       {id: 1, title: 'Bench Press'},
@@ -41,9 +53,12 @@ class App extends Component {
 
 
   render() {
+    console.log(this.props);
+
     const { title, exercises } = this.state
+    const { classes } = this.props
     return (
-      <Paper>
+      <Paper className={classes.root}>
         <Typography variant='display1' align='center'
           gutterBottom>
           <h1>Exercises</h1>
@@ -81,5 +96,4 @@ class App extends Component {
     );
   }
 }
-
-export default App;
+)
