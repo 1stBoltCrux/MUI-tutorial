@@ -2,16 +2,34 @@ import React, { Component } from 'react';
 import { Paper, Typography, TextField, Button, List, ListItem, ListItemText, ListItemSecondaryAction, IconButton } from '@material-ui/core'
 import Delete from '@material-ui/icons/Delete'
 import { withStyles } from '@material-ui/core/styles'
+import { createMuiTheme } from '@material-ui/core/styles'
+import { orange } from '@material-ui/core/colors'
 
+const theme = createMuiTheme({
+  palette: {
+    //When applied the color will the be calculated for light, main, dark and contrastText variations. For more granular control, you could pass in a plain object with any of those four keys.
+
+//     light: orange[200] // same as '#FFCC80',
+// main: '#FB8C00', // same as orange[600]
+// dark: '#EF6C00',
+// contrastText: 'rgb(0,0,0)'
+    primary: orange
+  }
+})
 
 //root refers to the 'root' Paper element.//
-const styles = {
+const styles = theme => console.log(theme) || ({
   root: {
     margin:20,
     padding:20,
     maxWidth: 400
+  },
+  form: {
+    display: 'flex',
+    alignItems: 'baseline',
+    justifyContent: 'space-evenly'
   }
-}
+})
 
 export default withStyles(styles) (class App extends Component {
 
@@ -63,7 +81,7 @@ export default withStyles(styles) (class App extends Component {
           gutterBottom>
           <h1>Exercises</h1>
         </Typography>
-        <form onSubmit={this.handleCreate}>
+        <form className={classes.form} onSubmit={this.handleCreate}>
           <TextField
             name='title'
             label='Exercise'
