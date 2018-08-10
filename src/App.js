@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Paper, Typography, TextField, Button, List, ListItem, ListItemText } from '@material-ui/core'
+import { Paper, Typography, TextField, Button, List, ListItem, ListItemText, ListItemSecondaryAction, IconButton } from '@material-ui/core'
+import Delete from '@material-ui/icons/Delete'
 
 class App extends Component {
   state = {
@@ -18,7 +19,7 @@ class App extends Component {
 
     handleCreate = e => {
       e.preventDefault()
-
+      console.log(...this.state.exercises);
       if (this.state.title) {
         this.setState(({ exercises, title}) => ({
           exercises: [
@@ -32,6 +33,11 @@ class App extends Component {
         }))
       }
     }
+
+    handleDelete = id =>
+      this.setState(({ exercises }) => ({
+        exercises: exercises.filter(ex => ex.id !== id)
+      }))
 
 
   render() {
@@ -61,6 +67,14 @@ class App extends Component {
           {exercises.map(({id, title}) =>
         <ListItem key={id}>
           <ListItemText primary={title}/>
+          <ListItemSecondaryAction>
+            <IconButton
+              color='primary'
+              onClick={()=>this.handleDelete(id)}
+              >
+                <Delete/>
+              </IconButton>
+          </ListItemSecondaryAction>
         </ListItem>)}
         </List>
       </Paper>
